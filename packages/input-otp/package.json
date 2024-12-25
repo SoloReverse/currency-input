@@ -1,21 +1,21 @@
 {
-  "name": "input-otp",
-  "version": "1.4.1",
-  "author": "Guilherme Rodz <g@rodz.dev>",
-  "description": "One-time password input component for React.",
+  "name": "@solorev/currency-input",
+  "version": "0.1.5",
+  "authors": "Guilherme Rodz <g@rodz.dev>",
+  "description": "Based on input-otp by @guilhermerodz",
   "license": "MIT",
   "homepage": "https://input-otp.rodz.dev/",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/guilhermerodz/input-otp.git",
+    "url": "git+https://github.com/SoloReverse/currency-input",
     "directory": "packages/input-otp"
   },
   "bugs": {
-    "url": "https://github.com/guilhermerodz/input-otp/issues"
+    "url": "https://github.com/SoloReverse/currency-input/issues"
   },
   "keywords": [
     "react",
-    "otp",
+    "currency",
     "input",
     "accessible"
   ],
@@ -49,7 +49,7 @@
     "lint:format:fix": "prettier --check \"src/**/*.ts\" --write",
     "lint:tsc": "tsc --project tsconfig.json --noEmit",
     "format": "prettier --write .",
-    "release": "npm publish",
+    "release": "npm publish --no-git-checks --public --access public",
     "release:beta": "npm publish --tag beta"
   },
   "eslintConfig": {

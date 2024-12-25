@@ -311,15 +311,16 @@ export const OTPInput = React.forwardRef<HTMLInputElement, OTPInputProps>(
     const _pasteListener = React.useCallback(
       (e: React.ClipboardEvent<HTMLInputElement>) => {
         const input = inputRef.current
-        if (!pasteTransformer && (!initialLoadRef.current.isIOS || !e.clipboardData || !input)) {
+        if (
+          !pasteTransformer &&
+          (!initialLoadRef.current.isIOS || !e.clipboardData || !input)
+        ) {
           return
         }
-        
+
         const _content = e.clipboardData.getData('text/plain')
-        const content = pasteTransformer
-          ? pasteTransformer(_content)
-          : _content
-        console.log({_content,content})
+        const content = pasteTransformer ? pasteTransformer(_content) : _content
+        console.log({ _content, content })
         e.preventDefault()
 
         const start = inputRef.current?.selectionStart
@@ -410,9 +411,7 @@ export const OTPInput = React.forwardRef<HTMLInputElement, OTPInputProps>(
     const renderedInput = React.useMemo(
       () => (
         <input
-          autoComplete={props.autoComplete || 'one-time-code'}
           {...props}
-          data-input-otp
           data-input-otp-placeholder-shown={value.length === 0 || undefined}
           data-input-otp-mss={mirrorSelectionStart}
           data-input-otp-mse={mirrorSelectionEnd}
@@ -472,8 +471,13 @@ export const OTPInput = React.forwardRef<HTMLInputElement, OTPInputProps>(
               slotIdx === mirrorSelectionStart) ||
               (slotIdx >= mirrorSelectionStart && slotIdx < mirrorSelectionEnd))
 
-          const char = value[slotIdx] !== undefined ? value[slotIdx] : null
-          const placeholderChar = value[0] !== undefined ? null : placeholder?.[slotIdx] ?? null
+          const char =
+            value[value.length - slotIdx - 1] != undefined
+              ? value[value.length - slotIdx - 1]
+              : null
+
+          const placeholderChar =
+            value[0] !== undefined ? null : placeholder?.[slotIdx] ?? null
 
           return {
             char,
