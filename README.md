@@ -6,6 +6,8 @@ Its just a tiny algorithm tweek to the component and removal of autocomplete att
 I'll try to remove all the unnecessary stuff later.
 Fully compatible with Shadcn Input OTP just change the imports as below
 
+![](https://github.com/SoloReverse/currency-input/blob/ee2adb30cd37e3f7ccabdb1217b93f8073e65021/examples/output.gif)
+
 ## Usage
 
 ```bash
